@@ -1,10 +1,10 @@
 # HonoRequest
 
-The `HonoRequest` is an object that can be taken from `c.req` which wraps a [Request](https://developer.mozilla.org/en-US/docs/Web/API/Request) object.
+`HonoRequest` は [Request](https://developer.mozilla.org/en-US/docs/Web/API/Request) をラップするオブジェクトで、 `c.req` からアクセスできます。
 
 ## param()
 
-Get the values of path parameters.
+パスパラメータの値を取得します。
 
 ```ts
 // Captured params
@@ -21,7 +21,7 @@ app.get('/entry/:id/comment/:commentId', (c) => {
 
 ## query()
 
-Get querystring parameters.
+クエリパラメータを取得します。
 
 ```ts
 // Query params
@@ -39,7 +39,7 @@ app.get('/search', (c) => {
 
 ## queries()
 
-Get multiple querystring parameter values, e.g. `/search?tags=A&tags=B`
+複数のクエリパラメータを取得します。 例: `/search?tags=A&tags=B`
 
 ```ts
 app.get('/search', (c) => {
@@ -51,7 +51,7 @@ app.get('/search', (c) => {
 
 ## header()
 
-Get the request header value.
+リクエストのヘッダを取得します。
 
 ```ts
 app.get('/', (c) => {
@@ -62,7 +62,7 @@ app.get('/', (c) => {
 
 ## parseBody()
 
-Parse Request body of type `multipart/form-data` or `application/x-www-form-urlencoded`
+`multipart/form-data` または `application/x-www-form-urlencoded` のリクエストボディをパースします。
 
 ```ts
 app.post('/entry', async (c) => {
@@ -71,9 +71,9 @@ app.post('/entry', async (c) => {
 })
 ```
 
-`parseBody()` supports the following behaviors.
+`parseBody()` は次の動作をサポートします。
 
-**Single file**
+**単一ファイル**
 
 ```ts
 const body = await c.req.parseBody()
@@ -82,30 +82,30 @@ body['foo']
 
 `body['foo']` is `(string | File)`.
 
-If multiple files are uploaded, the last one will be used.
+複数のファイルがアップロードされた場合、最後のファイルが取得されます。
 
-### Multiple files
+### 複数ファイル
 
 ```ts
 const body = await c.req.parseBody()
 body['foo[]']
 ```
 
-`body['foo[]']` is always `(string | File)[]`.
+`body['foo[]']` は常に `(string | File)[]` です。
 
-`[]` postfix is required.
+`[]` ポストフィックスが必要です。
 
-### Multiple files with same name
+### 同じ名前の複数ファイル
 
 ```ts
 const body = await c.req.parseBody({ all: true })
 body['foo']
 ```
 
-`all` option is disabled by default.
+`all` オプションはデフォルトで無効です。
 
-- If `body['foo']` is multiple files, it will be parsed to `(string | File)[]`.
-- If `body['foo']` is single file, it will be parsed to `(string | File)`.
+- `body['foo']` が複数ファイルだった場合、 `(string | File)[]` にパースされます。
+- `body['foo']` が単一ファイルだった場合、 `(string | File)` にパースされます。
 
 ### Dot notation
 
@@ -128,7 +128,7 @@ const body = await c.req.parseBody({ dot: true })
 
 ## json()
 
-Parses the request body of type `application/json`
+`application/json` のリクエストボディをパースします。
 
 ```ts
 app.post('/entry', async (c) => {
@@ -139,7 +139,7 @@ app.post('/entry', async (c) => {
 
 ## text()
 
-Parses the request body of type `text/plain`
+`text/plain` のリクエストボディをパースします。
 
 ```ts
 app.post('/entry', async (c) => {
@@ -150,7 +150,7 @@ app.post('/entry', async (c) => {
 
 ## arrayBuffer()
 
-Parses the request body as an `ArrayBuffer`
+リクエストボディを `ArrayBuffer` としてパースします。
 
 ```ts
 app.post('/entry', async (c) => {
@@ -183,7 +183,7 @@ app.post('/entry', async (c) => {
 
 ## valid()
 
-Get the validated data.
+バリデーションされたデータを取得します。
 
 ```ts
 app.post('/posts', (c) => {
@@ -192,7 +192,7 @@ app.post('/posts', (c) => {
 })
 ```
 
-Available targets are below.
+これらのデータに対して利用可能です。
 
 - `form`
 - `json`
@@ -201,11 +201,11 @@ Available targets are below.
 - `cookie`
 - `param`
 
-See the [Validation section](/guides/validation) for usage examples.
+[バリデーションセクション](/guides/validation)で利用例を見てください。
 
 ## routePath()
 
-You can retrieve the registered path within the handler like this:
+ハンドラ内で定義されたパスをこのように取得できます:
 
 ```ts
 app.get('/posts/:id', (c) => {
@@ -213,7 +213,7 @@ app.get('/posts/:id', (c) => {
 })
 ```
 
-If you access `/posts/123`, it will return `/posts/:id`:
+`/posts/123` にアクセスしたとき、 `/posts/:id` が返されます:
 
 ```json
 { "path": "/posts/:id" }
@@ -221,7 +221,7 @@ If you access `/posts/123`, it will return `/posts/:id`:
 
 ## matchedRoutes()
 
-It returns matched routes within the handler, which is useful for debugging.
+ハンドラで一致したルートを返します、デバッグに適しています。
 
 ```ts
 app.use(async function logger(c, next) {
@@ -242,7 +242,7 @@ app.use(async function logger(c, next) {
 
 ## path
 
-The request pathname.
+リクエストのパス。
 
 ```ts
 app.get('/about/me', (c) => {
@@ -253,7 +253,7 @@ app.get('/about/me', (c) => {
 
 ## url
 
-The request url strings.
+リクエストの URL 文字列。
 
 ```ts
 app.get('/about/me', (c) => {
@@ -264,7 +264,7 @@ app.get('/about/me', (c) => {
 
 ## method
 
-The method name of the request.
+リクエストの HTTP メソッド名。
 
 ```ts
 app.get('/about/me', (c) => {
@@ -275,7 +275,7 @@ app.get('/about/me', (c) => {
 
 ## raw
 
-The raw [`Request`](https://developer.mozilla.org/en-US/docs/Web/API/Request) object.
+RAWな [`Request`](https://developer.mozilla.org/en-US/docs/Web/API/Request) オブジェクト。
 
 ```ts
 // For Cloudflare Workers

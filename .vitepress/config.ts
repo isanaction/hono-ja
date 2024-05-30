@@ -3,15 +3,15 @@ import type { DefaultTheme } from 'vitepress'
 
 const sidebars = (): DefaultTheme.SidebarItem[] => [
   {
-    text: 'Concepts',
+    text: 'コンセプト',
     collapsed: true,
     items: [
-      { text: 'Motivation', link: '/concepts/motivation' },
-      { text: 'Routers', link: '/concepts/routers' },
-      { text: 'Benchmarks', link: '/concepts/benchmarks' },
-      { text: 'Web Standard', link: '/concepts/web-standard' },
-      { text: 'Middleware', link: '/concepts/middleware' },
-      { text: 'Developer Experience', link: '/concepts/developer-experience.md' },
+      { text: 'モチベーション', link: '/concepts/motivation' },
+      { text: 'ルーター', link: '/concepts/routers' },
+      { text: 'ベンチマーク', link: '/concepts/benchmarks' },
+      { text: 'Web 標準', link: '/concepts/web-standard' },
+      { text: 'ミドルウェア', link: '/concepts/middleware' },
+      { text: '開発体験', link: '/concepts/developer-experience.md' },
       { text: 'Hono Stacks', link: '/concepts/stacks' },
     ],
   },
@@ -39,30 +39,30 @@ const sidebars = (): DefaultTheme.SidebarItem[] => [
     collapsed: true,
     items: [
       { text: 'App', link: '/api/hono' },
-      { text: 'Routing', link: '/api/routing' },
+      { text: 'ルーティング', link: '/api/routing' },
       { text: 'Context', link: '/api/context' },
       { text: 'HonoRequest', link: '/api/request' },
-      { text: 'Exception', link: '/api/exception' },
-      { text: 'Presets', link: '/api/presets' },
+      { text: '例外', link: '/api/exception' },
+      { text: 'プリセット', link: '/api/presets' },
     ],
   },
   {
-    text: 'Guides',
+    text: 'ガイド',
     collapsed: true,
     items: [
-      { text: 'Middleware', link: '/guides/middleware' },
+      { text: 'ミドルウェア', link: '/guides/middleware' },
       { text: 'Helpers', link: '/guides/helpers' },
       {
         text: 'JSX',
         link: '/guides/jsx',
       },
       {
-        text: 'Client Components',
+        text: 'クライアントコンポーネント',
         link: '/guides/jsx-dom',
       },
       { text: 'Testing', link: '/guides/testing' },
       {
-        text: 'Validation',
+        text: 'バリデーション',
         link: '/guides/validation',
       },
       {
@@ -70,15 +70,15 @@ const sidebars = (): DefaultTheme.SidebarItem[] => [
         link: '/guides/rpc',
       },
       {
-        text: 'Best Practices',
+        text: 'ベストプラクティス',
         link: '/guides/best-practices',
       },
       {
-        text: 'Examples',
+        text: '例',
         link: '/guides/examples',
       },
       {
-        text: 'Miscellaneous',
+        text: 'その他',
         link: '/guides/others',
       },
       {
@@ -88,11 +88,11 @@ const sidebars = (): DefaultTheme.SidebarItem[] => [
     ],
   },
   {
-    text: 'Helpers',
+    text: 'ヘルパー',
     collapsed: true,
     items: [
       { text: 'Accepts', link: '/helpers/accepts' },
-      { text: 'Adapter', link: '/helpers/adapter' },
+      { text: 'アダプタ', link: '/helpers/adapter' },
       { text: 'ConnInfo', link: '/helpers/conninfo' },
       { text: 'Cookie', link: '/helpers/cookie' },
       { text: 'css', link: '/helpers/css' },
@@ -101,57 +101,57 @@ const sidebars = (): DefaultTheme.SidebarItem[] => [
       { text: 'html', link: '/helpers/html' },
       { text: 'JWT', link: '/helpers/jwt' },
       { text: 'SSG', link: '/helpers/ssg' },
-      { text: 'Streaming', link: '/helpers/streaming' },
-      { text: 'Testing', link: '/helpers/testing' },
+      { text: 'ストリーミング', link: '/helpers/streaming' },
+      { text: 'テスト', link: '/helpers/testing' },
       { text: 'WebSocket', link: '/helpers/websocket' },
     ],
   },
   {
-    text: 'Middleware',
+    text: 'ミドルウェア',
     collapsed: true,
     items: [
-      { text: 'Basic Authentication', link: '/middleware/builtin/basic-auth' },
-      { text: 'Bearer Authentication', link: '/middleware/builtin/bearer-auth' },
+      { text: 'Basic 認証', link: '/middleware/builtin/basic-auth' },
+      { text: 'Bearer 認証', link: '/middleware/builtin/bearer-auth' },
       { text: 'Body Limit', link: '/middleware/builtin/body-limit' },
-      { text: 'Cache', link: '/middleware/builtin/cache' },
-      { text: 'Compress', link: '/middleware/builtin/compress' },
+      { text: 'キャッシュ', link: '/middleware/builtin/cache' },
+      { text: '圧縮', link: '/middleware/builtin/compress' },
       { text: 'CORS', link: '/middleware/builtin/cors' },
-      { text: 'CSRF Protection', link: '/middleware/builtin/csrf' },
+      { text: 'CSRF 保護', link: '/middleware/builtin/csrf' },
       { text: 'ETag', link: '/middleware/builtin/etag' },
-      { text: 'JSX Renderer', link: '/middleware/builtin/jsx-renderer' },
+      { text: 'JSX レンダラー', link: '/middleware/builtin/jsx-renderer' },
       { text: 'JWT', link: '/middleware/builtin/jwt' },
-      { text: 'Logger', link: '/middleware/builtin/logger' },
+      { text: 'ロガー', link: '/middleware/builtin/logger' },
       { text: 'Method Override', link: '/middleware/builtin/method-override' },
-      { text: 'Pretty JSON', link: '/middleware/builtin/pretty-json' },
-      { text: 'Secure Headers', link: '/middleware/builtin/secure-headers' },
+      { text: 'JSON の整形', link: '/middleware/builtin/pretty-json' },
+      { text: 'セキュアヘッダ', link: '/middleware/builtin/secure-headers' },
       { text: 'Timeout', link: '/middleware/builtin/timeout' },
       { text: 'Timing', link: '/middleware/builtin/timing' },
       { text: 'Trailing Slash', link: '/middleware/builtin/trailing-slash' },
-      { text: '3rd-party Middleware', link: '/middleware/third-party' },
+      { text: 'サードパーティーミドルウェア', link: '/middleware/third-party' },
     ],
   },
 ]
 
 const sidebarsSnippets = (): DefaultTheme.SidebarItem[] => [
   {
-    text: 'Application',
+    text: 'アプリケーション',
     items: [
       {
-        text: 'File upload',
+        text: 'ファイルアップロード',
         link: '/snippets/file-upload',
       },
       {
-        text: 'Error handling in Validator',
+        text: 'バリデーターでエラーハンドリング',
         link: '/snippets/validator-error-handling',
       },
       {
-        text: 'Grouping routes for RPC',
+        text: 'RPC のためのルートのグループ化',
         link: '/snippets/grouping-routes-rpc',
       },
     ],
   },
   {
-    text: '3rd-party Middleware',
+    text: 'サードパーティーミドルウェア',
     items: [
       {
         text: 'Zod OpenAPI',
@@ -164,7 +164,7 @@ const sidebarsSnippets = (): DefaultTheme.SidebarItem[] => [
     ],
   },
   {
-    text: 'Ecosystem',
+    text: 'エコシステム',
     items: [
       {
         text: 'Remix + Hono',
@@ -173,7 +173,7 @@ const sidebarsSnippets = (): DefaultTheme.SidebarItem[] => [
     ],
   },
   {
-    text: 'Integration',
+    text: '統合',
     items: [
       {
         text: 'Cloudflare Durable Objects',
@@ -196,10 +196,10 @@ const sidebarsSnippets = (): DefaultTheme.SidebarItem[] => [
 ]
 
 export default defineConfig({
-  lang: 'en-US',
+  lang: 'ja',
   title: 'Hono',
   description:
-    'Ultrafast web framework for Cloudflare Workers, Fastly Compute, Deno, Bun, Vercel, Node.js, and others. Fast, but not only fast.',
+    'Cloudflare Workers 、 Fastly Compute 、Deno 、 Bun 、 Vercel 、 Netlify 、 AWS Lambda 、 Lambda@Edge 、 Node.js などのための爆速 Web フレームワーク。 速いですが、それだけではありません。',
   lastUpdated: true,
   ignoreDeadLinks: true,
   cleanUrls: true,
@@ -213,18 +213,18 @@ export default defineConfig({
     logo: '/images/logo-small.png',
     siteTitle: 'Hono',
     algolia: {
-      appId: '1GIFSU1REV',
-      apiKey: '6a9bb2036e456356e224ece74546ca14',
-      indexName: 'hono',
+      appId: 'ML5YEKHL8B',
+      apiKey: 'b37d63b7bab0db0e52ca5f5cd9c6ac21',
+      indexName: 'hono-ja',
     },
     socialLinks: [
       { icon: 'github', link: 'https://github.com/honojs' },
-      { icon: 'discord', link: 'https://discord.gg/KMh2eNSdxV' },
+      { icon: 'discord', link: 'https://discord.gg/VARKtGvCZK' },
       { icon: 'x', link: 'https://twitter.com/honojs' },
     ],
     editLink: {
-      pattern: 'https://github.com/honojs/website/edit/main/:path',
-      text: 'Edit this page on GitHub',
+      pattern: 'https://github.com/akku1139/hono-ja/edit/main/:path',
+      text: 'このページをGitHubで編集する',
     },
     footer: {
       message: 'Released under the MIT License.',

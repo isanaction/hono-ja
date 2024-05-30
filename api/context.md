@@ -1,10 +1,10 @@
 # Context
 
-To handle Request and Response, you can use `Context` object.
+Request / Response を処理するには、 `Context` オブジェクトを使用します。
 
 ## req
 
-`req` is the instance of HonoRequest.
+`req` は HonoRequest のインスタンスです。
 
 ```ts
 app.get('/hello', (c) => {
@@ -15,13 +15,13 @@ app.get('/hello', (c) => {
 
 ## body()
 
-Return the HTTP response.
+HTTP レスポンスを返します。
 
-You can set headers with `c.header()` and set HTTP status code with `c.status`.
+`c.header()` でヘッダをセットし、 `c.status` で HTTP ステータスコードを指定します。
 This can also be set in `c.text()`, `c.json()` and so on.
 
 ::: info
-**Note**: When returning Text or HTML, it is recommended to use `c.text()` or `c.html()`.
+**Note**: テキストや HTML を返す場合は、 `c.text()` や `c.html()` を使ってください。
 :::
 
 ```ts
@@ -38,7 +38,7 @@ app.get('/welcome', (c) => {
 })
 ```
 
-You can also write the following.
+このように書くこともできます。
 
 ```ts
 app.get('/welcome', (c) => {
@@ -49,7 +49,7 @@ app.get('/welcome', (c) => {
 })
 ```
 
-The Response is the same as below.
+以下と同じです。
 
 ```ts
 new Response('Thank you for coming', {
@@ -63,7 +63,7 @@ new Response('Thank you for coming', {
 
 ## text()
 
-Render text as `Content-Type:text/plain`.
+`Content-Type:text/plain` でテキストをレンダリングします。
 
 ```ts
 app.get('/say', (c) => {
@@ -73,7 +73,7 @@ app.get('/say', (c) => {
 
 ## json()
 
-Render JSON as `Content-Type:application/json`.
+`Content-Type:application/json` で JSON をレンダリングします。
 
 ```ts
 app.get('/api', (c) => {
@@ -83,7 +83,7 @@ app.get('/api', (c) => {
 
 ## html()
 
-Render HTML as `Content-Type:text/html`.
+`Content-Type:text/html` で HTML をレンダリングします。
 
 ```ts
 app.get('/', (c) => {
@@ -93,7 +93,7 @@ app.get('/', (c) => {
 
 ## notFound()
 
-Return the `Not Found` Response.
+`Not Found` レスポンスを返します。
 
 ```ts
 app.get('/notfound', (c) => {
@@ -103,7 +103,7 @@ app.get('/notfound', (c) => {
 
 ## redirect()
 
-Redirect, default status code is `302`.
+リダイレクトします。 デフォルトのステータスコードは `302` です。
 
 ```ts
 app.get('/redirect', (c) => {
@@ -126,7 +126,7 @@ app.use('/', async (c, next) => {
 
 ## set() / get()
 
-Set the value specified by the key with `set` and use it later with `get`.
+キーで指定した値を `set` し、後で `get` で取り出します。
 
 ```ts
 app.use(async (c, next) => {
@@ -140,7 +140,7 @@ app.get('/', (c) => {
 })
 ```
 
-Pass the `Variables` as Generics to the constructor of `Hono` to make it type-safe.
+`Variables` ジェネリクスを `Hono` に渡すと型安全になります。
 
 ```ts
 type Variables = {
@@ -152,14 +152,14 @@ const app = new Hono<{ Variables: Variables }>()
 
 ## var
 
-You can also access the value of a variable with `c.var`.
+`c.var` を使用しても変数の値にアクセスできます。
 
 ```ts
 const result = c.var.client.oneMethod()
 ```
 
-If you want to create the middleware which provides a custom method,
-write like the following:
+カスタムメソッドを提供するミドルウェアを作成したい場合は、
+このように書きます:
 
 ```ts
 type Env = {
@@ -195,7 +195,7 @@ app.get('/echo', (c) => {
 
 ## render() / setRenderer()
 
-You can set a layout using `c.setRenderer()` within a custom middleware.
+カスタムミドルウェア内で `c.setRenderer()` を使用してレイアウトを設定できます。
 
 ```tsx
 app.use(async (c, next) => {
@@ -212,7 +212,7 @@ app.use(async (c, next) => {
 })
 ```
 
-Then, you can utilize `c.render()` to create responses within this layout.
+次に、 `c.render()` を使用してそのレイアウトでレスポンスを作成します。
 
 ```ts
 app.get('/', (c) => {
@@ -220,7 +220,7 @@ app.get('/', (c) => {
 })
 ```
 
-The output of which will be:
+このような出力になります:
 
 ```html
 <html>
@@ -230,8 +230,8 @@ The output of which will be:
 </html>
 ```
 
-Additionally, this feature offers the flexibility to customize arguments.
-To ensure type safety, types can be defined as:
+また、この機能は柔軟に引数を設定することもできます。
+型安全のために、型を次のように設定できます:
 
 ```ts
 declare module 'hono' {
@@ -241,7 +241,7 @@ declare module 'hono' {
 }
 ```
 
-Here's an example of how you can use this:
+使用例を以下に示します:
 
 ```ts
 app.use('/pages/*', async (c, next) => {
@@ -308,8 +308,8 @@ app.get('/foo', async (c) => {
 
 ## env
 
-In Cloudflare Workers Environment variables, secrets, KV namespaces, D1 database, R2 bucket etc. that are bound to a worker are known as bindings.
-Regardless of type, bindings are always available as global variables and can be accessed via the context `c.env.BINDING_KEY`.
+Cloudflare Workers の環境変数、シークレット、 KV ネームスペース、 D1 データベース、 R2 バケット等... をバインディングよ呼びます。
+種類に関係なく、バインディングは常にグローバル変数として利用でき、 `c.env.BINDING_KEY` からアクセスできます。
 
 ```ts
 // Type definition to make type inference
@@ -328,9 +328,8 @@ app.get('/', (c) => {
 
 ## error
 
-If the Handler throws an error, the error object is placed in `c.error`.
-You can access it in your middleware.
-
+ハンドラでエラーが発生した場合、エラーオブジェクトは `c.error` に格納されます。
+ミドルウェアからアクセスできます。
 ```ts
 app.use(async (c, next) => {
   await next()
@@ -342,7 +341,7 @@ app.use(async (c, next) => {
 
 ## ContextVariableMap
 
-For instance, if you wish to add type definitions to variables when a specific middleware is used, you can extend `ContextVariableMap`. For example:
+例えば、特定のミドルウェアを使うときに変数へ型定義を追加したい場合、このように `ContextVariableMap` を使用できます:
 
 ```ts
 declare module 'hono' {
@@ -352,7 +351,7 @@ declare module 'hono' {
 }
 ```
 
-You can then utilize this in your middleware:
+これをミドルウェアで利用できます:
 
 ```ts
 const mw = createMiddleware(async (c, next) => {
@@ -361,7 +360,7 @@ const mw = createMiddleware(async (c, next) => {
 })
 ```
 
-In a handler, the variable is inferred as the proper type:
+ハンドラで、変数は適切な型を推論されます:
 
 ```ts
 app.get('/', (c) => {
